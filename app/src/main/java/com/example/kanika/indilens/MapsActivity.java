@@ -4,9 +4,9 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
@@ -28,9 +28,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.HashMap;
-import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -112,7 +109,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
 
-        Button btnRestaurant = (Button) findViewById(R.id.btnRestaurant);
+        /*Button btnRestaurant = (Button) findViewById(R.id.btnRestaurant);
         btnRestaurant.setOnClickListener(new View.OnClickListener() {
             String Restaurant = "restaurant";
             @Override
@@ -146,19 +143,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 getNearbyPlacesData.execute(DataTransfer);
                 Toast.makeText(MapsActivity.this,"Nearby Hospitals", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
         //MY FUNCTION ----------------
 
         Button btnFind = (Button) findViewById(R.id.btnFind);
         btnFind.setOnClickListener(new View.OnClickListener() {
-            EditText locSearch = (EditText) findViewById(R.id.locSearch);
-            String custom = locSearch.getText().toString();
+
             @Override
             public void onClick(View v) {
                 Log.d("onClick", "Button is Clicked");
+                EditText locSearch = (EditText)findViewById(R.id.locSearch);
+                String custom = locSearch.getText().toString();
                 mMap.clear();
+                Log.d("onClick",custom);
+
                 String url = getUrl(latitude, longitude, custom);
+
                 Object[] DataTransfer = new Object[2];
                 DataTransfer[0] = mMap;
                 DataTransfer[1] = url;
@@ -173,7 +174,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-        Button btnSchool = (Button) findViewById(R.id.btnSchool);
+        /*Button btnSchool = (Button) findViewById(R.id.btnSchool);
         btnSchool.setOnClickListener(new View.OnClickListener() {
             String School = "school";
             @Override
@@ -192,7 +193,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 getNearbyPlacesData.execute(DataTransfer);
                 Toast.makeText(MapsActivity.this,"Nearby Schools", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
     }
 
     protected synchronized void buildGoogleApiClient() {

@@ -1,24 +1,25 @@
 <FrameLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <fragment android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.kanika.indilens.MapsActivity"/>
+        tools:context="com.example.kanika.indilens.MapsActivity" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
-        <Button
+        <!--<Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnRestaurant"
@@ -34,21 +35,23 @@
             android:id="@+id/btnSchool"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nearby Schools" />
+            android:text="Nearby Schools" />-->
 
         <!-- my additions-->
 
         <EditText
             android:id="@+id/locSearch"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search"/>
+            android:hint="Search"
+            android:inputType="text" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnFind"
-            android:text="Find"/>
+            android:text="Find"
+            />
 
     </LinearLayout>
 </FrameLayout>

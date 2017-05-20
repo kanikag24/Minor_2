@@ -1,30 +1,27 @@
 package com.example.kanika.indilens;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import static com.example.kanika.indilens.MainActivity.mViewPager;
+
 
 
 public class tab_home extends Fragment {
 
+
     private Items[] items = {
-            new Items("Image Translator", R.drawable.ocr),
-            new Items("Text Translator", R.drawable.translator),
-            new Items("Navigator", R.drawable.locator),
-            new Items("To-Do List", R.drawable.check1),
+            new Items("Image Translator", R.drawable.ocr_small),
+            new Items("Text Translator", R.drawable.translator_small),
+            new Items("Navigator", R.drawable.locator_small),
+            new Items("To-Do List", R.drawable.check1small),
 
     };
 
@@ -37,32 +34,37 @@ public class tab_home extends Fragment {
 
         ImageAdapter imageAdapter = new ImageAdapter(getActivity(),items);
 
+
         gridView.setAdapter(imageAdapter);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (position){
+                ViewPager mViewPager = (ViewPager) getActivity().findViewById(R.id.container);
+                TabLayout tabs = (TabLayout) getActivity().findViewById(R.id.tabs);
 
-                    case 0:
-                        mViewPager.setCurrentItem(0,true);
+                if (position == 0) {
+                    Log.d("onItemClick", String.valueOf(position));
+                    mViewPager.setCurrentItem(0);
 
-                    case 1:
-                        mViewPager.setCurrentItem(1,true);
+                } else if (position == 1) {
+                    Log.d("onItemClick", String.valueOf(position));
+                    mViewPager.setCurrentItem(1);
+                } else if (position == 2) {
+                    Log.d("onItemClick", String.valueOf(position));
 
-                    case 2:
-                        mViewPager.setCurrentItem(2,true);
-
-                    case 3:
-                        mViewPager.setCurrentItem(3,true);
-
-                    default:
-                        return;
+                    mViewPager.setCurrentItem(3);
+                } else {
+                    Log.d("onItemClick", String.valueOf(position));
+                    mViewPager.setCurrentItem(4);
                 }
 
             }
+
         });
+
+
 
         return rootView;
     }
